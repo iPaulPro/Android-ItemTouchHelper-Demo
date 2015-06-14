@@ -31,7 +31,7 @@ import co.paulburke.android.itemtouchhelperdemo.helper.SimpleItemTouchHelperCall
 /**
  * @author Paul Burke (ipaulpro)
  */
-public class RecyclerListFragment extends Fragment implements RecyclerListAdapter.OnDragStartListener {
+public class RecyclerListFragment extends Fragment implements RecyclerListAdapter.OnStartDragListener {
 
     private ItemTouchHelper mItemTouchHelper;
 
@@ -61,7 +61,7 @@ public class RecyclerListFragment extends Fragment implements RecyclerListAdapte
     }
 
     @Override
-    public void onDragStarted(RecyclerView.ViewHolder viewHolder) {
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
         mItemTouchHelper.startDrag(viewHolder);
     }
 }

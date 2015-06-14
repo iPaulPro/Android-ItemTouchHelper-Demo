@@ -34,24 +34,36 @@ import co.paulburke.android.itemtouchhelperdemo.helper.ItemTouchHelperAdapter;
 import co.paulburke.android.itemtouchhelperdemo.helper.ItemTouchHelperViewHolder;
 
 /**
+ * Simple RecyclerView.Adapter that implements {@link ItemTouchHelperAdapter} to respond to move and
+ * dismiss events from a {@link android.support.v7.widget.helper.ItemTouchHelper}.
+ *
  * @author Paul Burke (ipaulpro)
  */
 public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapter.ItemViewHolder>
         implements ItemTouchHelperAdapter {
 
+    /**
+     * Listener for manual initiation of a drag.
+     */
+    public interface OnStartDragListener {
+
+        /**
+         * Called when a view is requesting a start of a drag.
+         *
+         * @param viewHolder The holder of the view to drag.
+         */
+        void onStartDrag(RecyclerView.ViewHolder viewHolder);
+    }
+
     private static final String[] STRINGS = new String[]{
             "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"
     };
 
-    public interface OnDragStartListener {
-        void onDragStarted(RecyclerView.ViewHolder viewHolder);
-    }
-
     private final List<String> mItems = new ArrayList<>();
 
-    private final OnDragStartListener mDragStartListener;
+    private final OnStartDragListener mDragStartListener;
 
-    public RecyclerListAdapter(OnDragStartListener dragStartListener) {
+    public RecyclerListAdapter(OnStartDragListener dragStartListener) {
         mDragStartListener = dragStartListener;
         mItems.addAll(Arrays.asList(STRINGS));
     }
@@ -67,11 +79,12 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
     public void onBindViewHolder(final ItemViewHolder holder, int position) {
         holder.textView.setText(mItems.get(position));
 
+        // Start a drag whenever the handle view it touched
         holder.handleView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
-                    mDragStartListener.onDragStarted(holder);
+                    mDragStartListener.onStartDrag(holder);
                 }
                 return false;
             }
@@ -96,6 +109,10 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
         return mItems.size();
     }
 
+    /**
+     * Simple example of a view holder that implements {@link ItemTouchHelperViewHolder} and has a
+     * "handle" view that initiates a drag event when touched.
+     */
     public static class ItemViewHolder extends RecyclerView.ViewHolder implements
             ItemTouchHelperViewHolder {
 
