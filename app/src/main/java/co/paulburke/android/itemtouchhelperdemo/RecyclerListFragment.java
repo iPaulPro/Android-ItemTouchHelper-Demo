@@ -15,7 +15,7 @@ import co.paulburke.android.itemtouchhelperdemo.helper.SimpleItemTouchHelperCall
 /**
  * @author Paul Burke (ipaulpro)
  */
-public class RecyclerListFragment extends Fragment {
+public class RecyclerListFragment extends Fragment implements RecyclerListAdapter.OnDragStartListener {
 
     private ItemTouchHelper mItemTouchHelper;
 
@@ -32,7 +32,7 @@ public class RecyclerListFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerListAdapter adapter = new RecyclerListAdapter();
+        RecyclerListAdapter adapter = new RecyclerListAdapter(this);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -44,4 +44,8 @@ public class RecyclerListFragment extends Fragment {
         mItemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
+    @Override
+    public void onDragStarted(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
+    }
 }
