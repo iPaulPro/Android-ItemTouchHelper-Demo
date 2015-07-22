@@ -35,11 +35,12 @@ public interface ItemTouchHelperAdapter {
      *
      * @param fromPosition The start position of the moved item.
      * @param toPosition   Then resolved position of the moved item.
+     * @return True if the item was moved to the new adapter position.
      *
      * @see RecyclerView#getAdapterPositionFor(RecyclerView.ViewHolder)
      * @see RecyclerView.ViewHolder#getAdapterPosition()
      */
-    void onItemMove(int fromPosition, int toPosition);
+    boolean onItemMove(int fromPosition, int toPosition);
 
 
     /**

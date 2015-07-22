@@ -16,6 +16,7 @@
 
 package co.paulburke.android.itemtouchhelperdemo;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.widget.RecyclerView;
@@ -33,6 +34,7 @@ import java.util.List;
 
 import co.paulburke.android.itemtouchhelperdemo.helper.ItemTouchHelperAdapter;
 import co.paulburke.android.itemtouchhelperdemo.helper.ItemTouchHelperViewHolder;
+import co.paulburke.android.itemtouchhelperdemo.helper.OnStartDragListener;
 
 /**
  * Simple RecyclerView.Adapter that implements {@link ItemTouchHelperAdapter} to respond to move and
@@ -43,30 +45,13 @@ import co.paulburke.android.itemtouchhelperdemo.helper.ItemTouchHelperViewHolder
 public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapter.ItemViewHolder>
         implements ItemTouchHelperAdapter {
 
-    /**
-     * Listener for manual initiation of a drag.
-     */
-    public interface OnStartDragListener {
-
-        /**
-         * Called when a view is requesting a start of a drag.
-         *
-         * @param viewHolder The holder of the view to drag.
-         */
-        void onStartDrag(RecyclerView.ViewHolder viewHolder);
-    }
-
-    private static final String[] STRINGS = new String[]{
-            "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"
-    };
-
     private final List<String> mItems = new ArrayList<>();
 
     private final OnStartDragListener mDragStartListener;
 
-    public RecyclerListAdapter(OnStartDragListener dragStartListener) {
+    public RecyclerListAdapter(Context context, OnStartDragListener dragStartListener) {
         mDragStartListener = dragStartListener;
-        mItems.addAll(Arrays.asList(STRINGS));
+        mItems.addAll(Arrays.asList(context.getResources().getStringArray(R.array.dummy_items)));
     }
 
     @Override
@@ -99,9 +84,10 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
     }
 
     @Override
-    public void onItemMove(int fromPosition, int toPosition) {
+    public boolean onItemMove(int fromPosition, int toPosition) {
         Collections.swap(mItems, fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
+        return true;
     }
 
     @Override

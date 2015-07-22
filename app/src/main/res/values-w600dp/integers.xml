@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2015 Paul Burke
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,23 +14,7 @@
   ~ limitations under the License.
   -->
 <resources>
-    <string name="app_name">ItemTouchHelper Demo</string>
 
-    <array name="main_items">
-        <item>List - Basic Drag and Swipe</item>
-        <item>Grid - Basic Swipe</item>
-    </array>
+    <integer name="grid_columns">3</integer>
 
-    <array name="dummy_items">
-        <item>One</item>
-        <item>Two</item>
-        <item>Three</item>
-        <item>Four</item>
-        <item>Five</item>
-        <item>Six</item>
-        <item>Seven</item>
-        <item>Eight</item>
-        <item>Nine</item>
-        <item>Ten</item>
-    </array>
 </resources>
