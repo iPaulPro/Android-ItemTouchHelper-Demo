@@ -29,7 +29,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import co.paulburke.android.itemtouchhelperdemo.helper.ItemTouchHelperAdapter;
@@ -85,7 +84,8 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
-        Collections.swap(mItems, fromPosition, toPosition);
+        String movedItem = mItems.remove(fromPosition);
+        mItems.add(toPosition, movedItem);
         notifyItemMoved(fromPosition, toPosition);
         return true;
     }
