@@ -36,19 +36,30 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
     public static final float ALPHA_FULL = 1.0f;
 
     private final ItemTouchHelperAdapter mAdapter;
+    private boolean dragEnabled=true;
+    private boolean swipeEnabled=true;
 
     public SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter) {
         mAdapter = adapter;
+        dragEnabled=swipeEnabled=true;
     }
 
     @Override
     public boolean isLongPressDragEnabled() {
-        return true;
+        return dragEnabled;
     }
 
     @Override
     public boolean isItemViewSwipeEnabled() {
-        return true;
+        return swipeEnabled;
+    }
+    
+    public boolean setDragEnabled(boolean dragEnabled) {
+        this.dragEnabled=dragEnabled;
+    }
+
+    public boolean setSwipeEnabled(boolean swipeEnabled) {
+        this.swipeEnabled=swipeEnabled;
     }
 
     @Override
