@@ -17,6 +17,7 @@
 package co.paulburke.android.itemtouchhelperdemo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
@@ -38,10 +39,10 @@ public class MainFragment extends ListFragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(final Context context) {
+        super.onAttach(context);
 
-        mItemClickListener = (OnListItemClickListener) activity;
+        mItemClickListener = (OnListItemClickListener) context;
     }
 
     @Override

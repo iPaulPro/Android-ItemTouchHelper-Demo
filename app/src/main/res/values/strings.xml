@@ -33,4 +33,6 @@
         <item>Nine</item>
         <item>Ten</item>
     </array>
+
+    <string name="reorder">A drag handle for reordering items.</string>
 </resources>
