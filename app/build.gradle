@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId "co.paulburke.android.itemtouchhelperdemo"
-        versionCode 3
-        versionName "1.1"
         minSdkVersion 10
         targetSdkVersion 23
+        versionCode 4
+        versionName "1.2"
     }
 }
 
