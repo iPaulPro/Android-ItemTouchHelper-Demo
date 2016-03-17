@@ -45,7 +45,7 @@ import co.paulburke.android.itemtouchhelperdemo.helper.OnStartDragListener;
 public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapter.ItemViewHolder>
         implements ItemTouchHelperAdapter {
 
-    private final List<String> mItems = new ArrayList<>();
+    protected final List<String> mItems = new ArrayList<>();
 
     private final OnStartDragListener mDragStartListener;
 
