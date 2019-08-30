@@ -1,3 +1,11 @@
+# Android-ItemTouchHelper-Demo
+
+Migrated version to newest dependencies and androidx from https://github.com/iPaulPro/Android-ItemTouchHelper-Demo
+
+
+
+# Original Readme
+
 ## Another drag and swipe library?
 
 This project is an example of basic drag & drop and swipe-to-dismiss with `RecyclerView` using `ItemTouchHelper`. It corresponds with an article series found here:
