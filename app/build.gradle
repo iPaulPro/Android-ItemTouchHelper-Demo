@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
-    //buildToolsVersion "22.0.1"
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "co.paulburke.android.itemtouchhelperdemo"
         minSdkVersion 23
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 3
         versionName "1.1"
     }
@@ -15,6 +14,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    api 'androidx.appcompat:appcompat:1.1.0'
+    //implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    api 'androidx.recyclerview:recyclerview:1.0.0'
 }
