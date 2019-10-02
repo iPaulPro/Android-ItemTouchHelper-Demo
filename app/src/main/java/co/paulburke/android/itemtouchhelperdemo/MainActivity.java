@@ -18,13 +18,13 @@ package co.paulburke.android.itemtouchhelperdemo;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 /**
  * @author Paul Burke (ipaulpro)
  */
-public class MainActivity extends ActionBarActivity implements MainFragment.OnListItemClickListener {
+public class MainActivity extends AppCompatActivity implements MainFragment.OnListItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
