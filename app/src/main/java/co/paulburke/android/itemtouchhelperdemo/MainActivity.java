@@ -17,14 +17,15 @@
 package co.paulburke.android.itemtouchhelperdemo;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 /**
  * @author Paul Burke (ipaulpro)
  */
-public class MainActivity extends ActionBarActivity implements MainFragment.OnListItemClickListener {
+public class MainActivity extends AppCompatActivity implements MainFragment.OnListItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class MainActivity extends ActionBarActivity implements MainFragment.OnLi
                 break;
         }
 
+        assert fragment != null;
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content, fragment)
                 .addToBackStack(null)

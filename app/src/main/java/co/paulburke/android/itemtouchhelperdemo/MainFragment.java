@@ -16,12 +16,16 @@
 
 package co.paulburke.android.itemtouchhelperdemo;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.ListFragment;
+
+import java.util.Objects;
 
 /**
  * @author Paul Burke (ipaulpro)
@@ -38,10 +42,10 @@ public class MainFragment extends ListFragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
 
-        mItemClickListener = (OnListItemClickListener) activity;
+        mItemClickListener = (OnListItemClickListener) context;
     }
 
     @Override
@@ -49,13 +53,13 @@ public class MainFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
 
         final String[] items = getResources().getStringArray(R.array.main_items);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()),
                 android.R.layout.simple_list_item_1, items);
         setListAdapter(adapter);
     }
 
     @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
+    public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id) {
         mItemClickListener.onListItemClick(position);
     }
 }
